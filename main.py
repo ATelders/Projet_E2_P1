@@ -4,9 +4,10 @@ import matplotlib.pyplot as plt
 import pickle
 
 st.write("""
-# Prédiction du prix de vente des biens immobiliers à Ames (Iowa USA)
+# Kaa Banque - Obtenez votre prêt en toute confiance
 """)
 st.write('---')
+st.image('kaa.png', use_column_width=True)
 
 
 X = pd.read_csv("clean_X.csv")
@@ -14,6 +15,8 @@ X = pd.read_csv("clean_X.csv")
 # Sidebar
 # Header of Specify Input Parameters
 st.sidebar.header('Quels sont vos critères?')
+
+Prix = st.sidebar.text_input('Prix souhaité', '100000')
 
 
 def user_input_features():
@@ -59,4 +62,8 @@ formated_prediction = '${:,}'.format(int(prediction))
 st.header('Prediction du prix de vente')
 st.write(formated_prediction)
 st.write('---')
+if int(prediction) < int(Prix):
+    st.success('Ce bien est dans votre budget !')
+else:
+    st.error('Ce bien est trop cher pour votre budget !')
 

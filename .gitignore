@@ -3,3 +3,4 @@ requirements.txt
 finalized_model.sav
 AmesHousing.xls
 clean_X.csv
+__pycache__
