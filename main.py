@@ -11,7 +11,6 @@ st.write('---')
 
 X = pd.read_csv("clean_X.csv")
 
-
 # Sidebar
 # Header of Specify Input Parameters
 st.sidebar.header('Quels sont vos critères?')
@@ -46,12 +45,18 @@ st.header('Précisez vos critères')
 st.write(df)
 st.write('---')
 
+def predict_price(features):
+    """
+    Performs predictions
+    """
+    loaded_model = pickle.load(open('finalized_model.sav', 'rb'))
+    prediction = loaded_model.predict(features)
+    return prediction
 
-# Apply Model to Make Prediction
-loaded_model = pickle.load(open("finalized_model.sav", 'rb'))
-prediction = loaded_model.predict(df)
+prediction = predict_price(df)
 
 formated_prediction = '${:,}'.format(int(prediction))
 st.header('Prediction du prix de vente')
 st.write(formated_prediction)
 st.write('---')
+
