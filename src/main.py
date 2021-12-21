@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -7,10 +9,10 @@ st.write("""
 # Kaa Banque - Obtenez votre prêt en toute confiance
 """)
 st.write('---')
-st.image('kaa.png', use_column_width=True)
+st.image('data/kaa.png', use_column_width=True)
 
 
-X = pd.read_csv("clean_X.csv")
+X = pd.read_csv("data/clean_X.csv")
 
 # Sidebar
 # Header of Specify Input Parameters

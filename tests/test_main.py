@@ -1,16 +1,33 @@
-import main
+# -*- coding: utf-8 -*-
+
+import sys
+sys.path.insert(0, '/home/apprenant/simplon_projects/Projet_E2_P1/src')
+
+from src.main import user_input_features, predict_price
 import pandas as pd
 import streamlit as st
 import numpy as np
 
-X = pd.read_csv("clean_X.csv")
+X = pd.read_csv("data/clean_X.csv")
 
 
 def test_user_input_features():
     """
     Test user input features
+    Assert that the user inputs are of the correct type
     """
-    assert isinstance(main.user_input_features(), pd.DataFrame)
+    data = {'Age': int(),
+            'GrLivArea': int(),
+            'LotFrontage': int(),
+            'LotArea': int(),
+            'GarageArea': int(),
+            'Fence': bool(),
+            'Pool' : bool()
+            }
+
+    test_df = pd.DataFrame(data, index=[0])
+    # assert the dataframe dtypes are correct
+    assert user_input_features().dtypes.equals(test_df.dtypes)
 
 
 def test_predict_price():
@@ -34,6 +51,6 @@ def test_predict_price():
             'Pool' : False
             }
     features = pd.DataFrame(data, index=[0])
-    assert isinstance(main.predict_price(features), np.ndarray)
-    assert isinstance(main.predict_price(features).tolist()[0], float)
-    assert 0 < main.predict_price(features).tolist()[0] < 1000000
+    assert isinstance(predict_price(features), np.ndarray)
+    assert isinstance(predict_price(features).tolist()[0], float)
+    assert 0 < predict_price(features).tolist()[0] < 1000000

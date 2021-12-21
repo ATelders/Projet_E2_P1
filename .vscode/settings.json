@@ -1,1 +1,4 @@
-{}
+{
+    "azureML.defaultWorkspaceId": "/subscriptions/07ef45d3-9cd0-461a-9d8c-03161758bde0/resourceGroups/rg-arthur/providers/Microsoft.MachineLearningServices/workspaces/ws-mlstudio-arthur",
+    "jupyter.jupyterServerType": "remote"
+}
